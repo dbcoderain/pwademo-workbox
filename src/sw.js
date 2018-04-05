@@ -90,33 +90,23 @@ if (workbox) {
             });
     });
 
-    // const bgSyncPlugin = new workbox.backgroundSync.Plugin('myQueueName', {
-    //     maxRetentionTime: 24 * 60 // Retry for max of 24 Hours
-    //   });
-
-    //   workbox.routing.registerRoute(
-    //     /\/notes/,
-    //     workbox.strategies.networkOnly({
-    //       plugins: [bgSyncPlugin]
-    //     }),
-    //     'POST'
-    //   );
-
-    const queue = new workbox.backgroundSync.Queue('myQueueName2');
+    const queue = new workbox.backgroundSync.Queue('myQueueName');
 
     self.addEventListener('fetch', (event) => {
-        // Clone the request to ensure it's save to read when
-        // adding to the Queue.
-        const promiseChain = fetch(event.request.clone())
-            .then((response) => {
-                debugger;
-                return response;
-            })
-            .catch((err) => {
-                return queue.addRequest(event.request);
-            });
+        if (event.request.method === 'POST' && event.request.url.includes('dbcoderain')) {
+            // Clone the request to ensure it's save to read when
+            // adding to the Queue.
+            const promiseChain = fetch(event.request.clone())
+                .then((response) => {
+                    debugger;
+                    return response;
+                })
+                .catch((err) => {
+                    return queue.addRequest(event.request);
+                });
 
-        event.waitUntil(promiseChain);
+            event.waitUntil(promiseChain);
+        }
     });
 
 } else {

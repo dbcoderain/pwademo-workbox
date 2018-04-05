@@ -21,12 +21,10 @@
 
 
 function postData() {
-    debugger;
-
     var message = {
         name: 'David Test',
         age: 40,
-        timeStamp: new Date().toLocaleDateString()
+        timeStamp: new Date().toString()
     }
 
 
@@ -45,11 +43,11 @@ function postData() {
             console.log('response text is:' + text);
             try {
                 return JSON.parse(text);
-                // Do your JSON handling here
             } catch (err) {
                 // It is text, do you text handling here
             }
-        }).then(function (data) {
+        })
+        .then(function (data) {
             if (data && data.success) {
                 console.log('Data Sent successfully...');
             } else {

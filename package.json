@@ -9,7 +9,7 @@
     "copy": "copyfiles -u 1 src/**/**/* src/**/* src/* build",
     "build": "npm run clean && npm run copy && workbox injectManifest workbox-config.js",
     "start": "node server.js",
-    "go": "npm run build && npm run start"    
+    "go": "npm run build && npm run start"
   },
   "author": "",
   "license": "ISC",
