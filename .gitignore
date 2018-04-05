@@ -1,0 +1,10 @@
+*.pyc
+# don't include third-party dependencies.
+lib/
+!lib/README.md
+.DS_Store
+node_modules
+static/css
+static/js
+myapp.datastore
+build/

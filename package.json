@@ -1,0 +1,24 @@
+{
+  "name": "workbox-lab",
+  "version": "1.0.0",
+  "description": "a lab for learning workbox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf build/*",
+    "copy": "copyfiles -u 1 src/**/**/* src/**/* src/* build",
+    "build": "npm run clean && npm run copy && workbox injectManifest workbox-config.js",
+    "start": "node server.js",
+    "go": "npm run build && npm run start"    
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.15.4"
+  },
+  "devDependencies": {
+    "copyfiles": "1.2.0",
+    "rimraf": "^2.6.2",
+    "workbox-cli": "^3.0.1"
+  }
+}
